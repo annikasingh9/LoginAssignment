@@ -1,0 +1,95 @@
+<LoginManager>:
+    LoginPage:
+        name: "login_page"
+    CorrectLogin:
+        name: "correct_screen"
+    RegisterScreen:
+        name: "register_screen"
+
+
+
+<LoginPage>:
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        Label:
+            text: "Enter a Username and Password"
+
+        TextInput:
+            id: username
+            size_hint: .5, .1
+            hint_text: "Username"
+            pos_hint: {"center_x":0.5}
+        TextInput:
+            id: password
+            hint_text: "Password"
+            size_hint: .5, .1
+            pos_hint: {"center_x":0.5}
+
+
+        Button:
+            text: "Enter"
+            size_hint: .5, .1
+            pos_hint: {"center_x":0.5}
+            on_release: root.check_credentials(username,password)
+        Button:
+            text: "Register for a new account"
+            font_size: 30
+            background_color: "black"
+            size_hint: .5,.1
+            pos_hint: {"center_x":0.5}
+            on_release: root.register()
+        Label:
+            id: test
+            text: ""
+
+<CorrectLogin>
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        Label:
+            text: "Welcome"
+        Button:
+            text: "Logout"
+            on_press:
+            font_size: 50
+            background_color: "black"
+            size_hint: 0.6,.3
+            pos_hint: {"center_x": 0.5}
+            on_release: root.advance()
+
+
+<RegisterScreen>
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        Label:
+            text: "Enter a new Username and Password"
+
+        TextInput:
+            id: newusername
+            size_hint: .5, .1
+            hint_text: "New Username"
+            pos_hint: {"center_x":0.5}
+        TextInput:
+            id: newpassword
+            hint_text: "New Password"
+            size_hint: .5, .1
+            pos_hint: {"center_x":0.5}
+        TextInput:
+            id: re_newpassword
+            hint_text: "Re-enter New Password"
+            size_hint: .5, .1
+            pos_hint: {"center_x":0.5}
+        Label:
+            text: "must contain at lease one capital letter \nmust contain at least one lower case letter \nmust contain at least one number\nmust contain at least one special character\nthe password must be at least 8 characters long."
+        Label:
+            id: validity
+            text: "Invalid"
+            color: 1,0,0,0
+        Button:
+            text: "Enter"
+            size_hint: .5, .1
+            pos_hint: {"center_x":0.5}
+            on_release: root.register(newusername, newpassword, re_newpassword)
